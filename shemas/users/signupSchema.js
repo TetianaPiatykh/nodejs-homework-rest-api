@@ -1,11 +1,9 @@
 const Joi = require('joi');
-const { string } = require('joi');
 
-const addSchema = Joi.object({
-  name: Joi.string().alphanum().min(3).max(30).required(),
-  phone: Joi.number().positive().required(),
+const signupSchema = Joi.object({
+  password: Joi.string().min(6).max(30).required(),
   email: Joi.string().email().required(),
-  favorite: Joi.boolean(),
+  subscription: Joi.string().valid('starter', 'pro', 'business'),
 }).messages({
   'string.base': `"" should be a type of string`,
   'string.empty': `"" must contain value`,
@@ -13,4 +11,4 @@ const addSchema = Joi.object({
   'any.required': `missing required name field`,
 });
 
-module.exports = addSchema;
+module.exports = signupSchema;
