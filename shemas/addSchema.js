@@ -4,6 +4,7 @@ const addSchema = Joi.object({
   name: Joi.string().alphanum().min(3).max(30).required(),
   phone: Joi.number().positive().required(),
   email: Joi.string().email().required(),
+  favorite: Joi.boolean(),
 }).messages({
   'string.base': `"" should be a type of string`,
   'string.empty': `"" must contain value`,
